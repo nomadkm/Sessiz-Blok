@@ -1,0 +1,18 @@
+# build_lists.py çıktıları (başkalarının lisanslı listelerinden türetilir)
+lists/
+list_*.json
+cosmetic.json
+
+# Paketler
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+
+# Editör ve sistem dosyaları
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+node_modules/
