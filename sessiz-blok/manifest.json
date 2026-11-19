@@ -1,0 +1,97 @@
+{
+  "manifest_version": 3,
+  "name": "Sessiz Blok",
+  "version": "0.2.0",
+  "description": "Popup ve video reklamlarını engelleyen hafif reklam engelleyici.",
+  "permissions": [
+    "declarativeNetRequest",
+    "storage",
+    "alarms",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Sessiz Blok",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ads",
+        "enabled": true,
+        "path": "rules.json"
+      },
+      {
+        "id": "list_1",
+        "enabled": true,
+        "path": "list_1.json"
+      },
+      {
+        "id": "list_2",
+        "enabled": true,
+        "path": "list_2.json"
+      },
+      {
+        "id": "list_3",
+        "enabled": true,
+        "path": "list_3.json"
+      },
+      {
+        "id": "list_4",
+        "enabled": true,
+        "path": "list_4.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "scriptlets.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "stubs/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "use_dynamic_url": true
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
