@@ -50,7 +50,7 @@ chrome.runtime.onInstalled.addListener(async () => {
   const { updateStatus } = await chrome.storage.local.get("updateStatus");
   chrome.alarms.create("update-lists", {
     periodInMinutes: 7 * 24 * 60,
-    ...(updateStatus?.state === "ok" ? {} : { delayedInMinutes: 1 })
+    ...(updateStatus?.state === "ok" ? {} : { delayInMinutes: 1 })
   });
 });
 chrome.runtime.onStartup.addListener(() => syncAllowRules());
